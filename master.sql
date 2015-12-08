@@ -62,7 +62,7 @@ create table cardapio(
 create table bloco(
   oid character(32) primary key,
   titulo varchar(50),
-  descricao varcar(200),
+  descricao varchar(200),
   imagemTitulo bytea,
   background varchar(8),
   ordem int,
@@ -125,5 +125,5 @@ create table adicional(
   ativo int
 );
 
-ALTER TABLE adicional ADD CONSTRAINT fkadicionalTipoAdicional FOREIGN KEY (tipoAdiconal) REFERENCES tipoAdiconal (oid) MATCH FULL;
+ALTER TABLE adicional ADD CONSTRAINT fkadicionalTipoAdicional FOREIGN KEY (tipoAdicional) REFERENCES tipoAdicional (oid) MATCH FULL;
 
