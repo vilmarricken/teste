@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="master-persistence" basedir="." default="mvn">
+  <target name="mvn">
+    <exec dir="." executable="cmd.exe">
+      <arg line="/c mvn clean package install -Dmaven.test.skip=true -DdownloadSources=true" />
+    </exec>
+  </target>
+  <target name="eclipse">
+    <exec dir="." executable="cmd.exe">
+      <arg line="/c mvn eclipse:eclipse -DdownloadSources=true" />
+    </exec>
+  </target>
+  <target name="clean">
+    <exec dir="." executable="cmd.exe">
+      <arg line="/c mvn eclipse:clean" />
+    </exec>
+  </target>
+  <target name="copy" depends="mvn">
+    <property name="projectName" value="master-persistence" />
+    <property name="projectVersion" value="1.0" />
+    <property name="projectJar" value="${projectName}-${projectVersion}.jar" />
+    <property name="copyTo" value="C:\master\pedidos\WEB-INF\lib" />
+    <copy file="target/${projectJar}" tofile="${copyTo}\${projectJar}" overwrite="true" />
+  </target>
+</project>
+
