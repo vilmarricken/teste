@@ -1,4 +1,4 @@
-create table estado(
+﻿create table estado(
   oid character(32) primary key,
   nome varchar(50),
   sigla varchar(2)
@@ -56,8 +56,11 @@ create table cardapio(
   oid character(32) primary key,
   ativo int,
   corFundo varchar(8),
-  titulo varchar(50)
+  titulo varchar(50),
+  estabelecimento character(32)
 );
+
+ALTER TABLE cardapio ADD CONSTRAINT fkestabelecimento FOREIGN KEY (estabelecimento) REFERENCES estabelecimento (oid) MATCH FULL;
   
 create table bloco(
   oid character(32) primary key,

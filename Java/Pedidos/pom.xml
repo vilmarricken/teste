@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns:ns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.master</groupId>
+	<artifactId>master-pedidos</artifactId>
+	<name>Master Persistence Library</name>
+	<version>1.0</version>
+	<description>[Project description]</description>
+	<repositories>
+		<repository>
+			<id>Central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<dependencies>
+
+		<dependency>
+			<groupId>com.master</groupId>
+			<artifactId>master-core</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.master</groupId>
+			<artifactId>master-persistence</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+</project>
+
