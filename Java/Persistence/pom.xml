@@ -5,7 +5,7 @@
 	<groupId>com.master</groupId>
 	<artifactId>master-persistence</artifactId>
 	<name>Master Persistence Library</name>
-	<version>${project.parent.version}</version>
+	<version>1.0</version>
 	<description>[Project description]</description>
 	<repositories>
 		<repository>
@@ -18,65 +18,17 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<build>
-		<directory>target</directory>
-		<outputDirectory>target</outputDirectory>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<fork>true</fork>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifestEntries>
-							<Implementation-Title>${project.artifactId}</Implementation-Title>
-							<Implementation-Version>${project.version}</Implementation-Version>
-							<url>${project.url}</url>
-						</manifestEntries>
-					</archive>
-				</configuration>
-			</plugin>
-			<!--
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteIfNewer>true</overWriteIfNewer>
-							<overWriteSnapshots>false</overWriteSnapshots>
-							<outputDirectory>webapps/softexpert/WEB-INF/lib</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			-->
-		</plugins>
-	</build>
 	<dependencies>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1206-jdbc42</version>
+		</dependency>
+		<dependency>
+			<groupId>com.master</groupId>
+			<artifactId>master-core</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 </project>
