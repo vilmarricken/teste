@@ -1,7 +1,10 @@
 package com.master.pedidos.dao.cardapio;
 
 import com.master.core.dao.Dao;
+import com.master.pedidos.model.cardapio.CardapioModel;
 
-public class CardapioDao implements Dao {
+public interface CardapioDao extends Dao {
+
+	CardapioModel builModel(String estabelecimento);
 
 }
