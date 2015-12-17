@@ -1,5 +1,7 @@
 package com.master.pedidos.model.cardapio;
 
+import java.util.Set;
+
 import com.master.core.dao.DaoFactory;
 import com.master.core.exception.MasterException;
 import com.master.pedidos.dao.cardapio.CardapioDao;
@@ -35,8 +37,34 @@ public class CardapioModelBuilder {
 	private static void builBodyContainer(CardapioModel model, StringBuilder out) {
 		out.append("	<div class=\"container\">").append(CardapioModelBuilder.NL);
 		out.append("	<div class=\"row\">").append(CardapioModelBuilder.NL);
+		Set<Bloco> blocos = model.getBlocos();
+		for (Bloco bloco : blocos) {
+			buildBodyBloco(bloco, out);
+		}
 		out.append("	</div>").append(CardapioModelBuilder.NL);
 		out.append("	</div>").append(CardapioModelBuilder.NL);
+	}
+
+	private static void buildBodyBloco(Bloco bloco, StringBuilder out) {
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		    Basic panel example
+		  </div>
+		</div>
+		
+		
+		
+		<div class="panel panel-default">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading">Panel heading</div>
+
+		  <!-- Table -->
+		  <table class="table">
+		    ...
+		  </table>
+		</div>
+		
+		
 	}
 
 	private static void buildBodyNavigation(CardapioModel model, StringBuilder out) {

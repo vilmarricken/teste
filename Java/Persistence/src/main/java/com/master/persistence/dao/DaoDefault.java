@@ -27,14 +27,24 @@ public abstract class DaoDefault implements Dao {
 
 	@Override
 	public void closeResultSet(ResultSet rs) {
-		// TODO Auto-generated method stub
-
+		if(rs!=null){
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public void closeStatement(Statement stmt) {
-		// TODO Auto-generated method stub
-
+		if(stmt!=null){
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

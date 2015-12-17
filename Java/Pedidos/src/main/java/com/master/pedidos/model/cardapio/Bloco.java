@@ -21,6 +21,8 @@ public class Bloco implements Comparable<Bloco> {
 
 	private Set<Bloco> fillhos;
 
+	private Set<Produto> produto;
+
 	public Bloco() {
 	}
 
@@ -92,4 +94,13 @@ public class Bloco implements Comparable<Bloco> {
 	public int compareTo(Bloco o) {
 		return this.ordem - o.ordem;
 	}
+	
+	public Set<Produto> getProduto() {
+		return produto;
+	}
+	
+	public void setProduto(Set<Produto> produto) {
+		this.produto = produto;
+	}
+	
 }
