@@ -10,10 +10,12 @@ public class CardapioModel {
 
 	private String titulo;
 
+	private String descricao;
+
 	private Set<Bloco> blocos;
 
 	public String getOid() {
-		return oid;
+		return this.oid;
 	}
 
 	public void setOid(String oid) {
@@ -21,7 +23,7 @@ public class CardapioModel {
 	}
 
 	public boolean isAtivo() {
-		return ativo;
+		return this.ativo;
 	}
 
 	public void setAtivo(boolean ativo) {
@@ -29,7 +31,7 @@ public class CardapioModel {
 	}
 
 	public String getTitulo() {
-		return titulo;
+		return this.titulo;
 	}
 
 	public void setTitulo(String titulo) {
@@ -37,11 +39,19 @@ public class CardapioModel {
 	}
 
 	public Set<Bloco> getBlocos() {
-		return blocos;
+		return this.blocos;
 	}
 
 	public void setBlocos(Set<Bloco> blocos) {
 		this.blocos = blocos;
+	}
+
+	public String getDescricao() {
+		return this.descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 }
