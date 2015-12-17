@@ -62,23 +62,27 @@ public class CardapioDaoDefault extends DaoDefault implements CardapioDao {
 	private static int COLUMN_BLOCO_SUPERIOR = 10;
 
 	private void populateBloco(Set<Bloco> blocos, Map<String, Bloco> mapBlocos, ResultSet rs) throws SQLException {
-		Bloco bloco = getBloco(rs.getString(COLUMN_BLOCO_OID), mapBlocos);
-		bloco.setTitulo(rs.getString(COLUMN_BLOCO_TITULO));
-		bloco.setDescricao(rs.getString(COLUMN_BLOCO_DESCRICAO));
-		bloco.setImagemTitulo(rs.getString(COLUMN_BLOCO_IMAGEM_TITULO));
-		bloco.setBackground(rs.getString(COLUMN_BLOCO_BACKGROUND));
-		bloco.setOrdem(rs.getInt(COLUMN_BLOCO_ORDEM));
-		String superiorOid = rs.getString(COLUMN_BLOCO_SUPERIOR);
-		if (rs.wasNull()) {
-			Bloco superior = getBloco(superiorOid, mapBlocos);
-			bloco.setSuperior(superior);
-			Set<Bloco> filhos = superior.getFillhos();
-			if(filhos == null){
-				filhos = new TreeSet<>();
-				superior.setFillhos(filhos);
+		do {
+			Bloco bloco = getBloco(rs.getString(COLUMN_BLOCO_OID), mapBlocos);
+			bloco.setTitulo(rs.getString(COLUMN_BLOCO_TITULO));
+			bloco.setDescricao(rs.getString(COLUMN_BLOCO_DESCRICAO));
+			bloco.setImagemTitulo(rs.getString(COLUMN_BLOCO_IMAGEM_TITULO));
+			bloco.setBackground(rs.getString(COLUMN_BLOCO_BACKGROUND));
+			bloco.setOrdem(rs.getInt(COLUMN_BLOCO_ORDEM));
+			String superiorOid = rs.getString(COLUMN_BLOCO_SUPERIOR);
+			if (superiorOid != null) {
+				Bloco superior = getBloco(superiorOid, mapBlocos);
+				bloco.setSuperior(superior);
+				Set<Bloco> filhos = superior.getFillhos();
+				if (filhos == null) {
+					filhos = new TreeSet<>();
+					superior.setFillhos(filhos);
+				}
+				filhos.add(bloco);
+			} else {
+				blocos.add(bloco);
 			}
-			filhos.add(bloco);
-		}
+		} while (rs.next());
 	}
 
 	private Bloco getBloco(String blocoOid, Map<String, Bloco> mapBlocos) {
@@ -107,7 +111,7 @@ public class CardapioDaoDefault extends DaoDefault implements CardapioDao {
 		sb.append("       inner join bloco\n");
 		sb.append("                  on bloco.cardapio=cardapio.oid\n");
 		sb.append("       where cardapio.estabelecimento=?\n");
-		sb.append("       where cardapio.ativo=1\n");
+		sb.append("         and cardapio.ativo=1\n");
 		return sb.toString();
 	}
 
