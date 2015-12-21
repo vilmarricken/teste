@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+.navbar {
+	margin-bottom: 50px;
+	border-radius: 0;
+}
+
+.jumbotron {
+	margin-bottom: 0;
+}
+
+footer {
+	background-color: #f2f2f2;
+	padding: 25px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="list-inline">
+			<li>
+			<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<td colspan="4" align="center">PETISCOS FRIOS</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Antepasto</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(berinjela especial, tomate seco, mussarela
+							de búfala, azeitonas pretas e torradas)</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Mix de Crocantes</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(amendoim, castanhas e nozes, torradas e
+							salgados)</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Torradinhas</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(com geléia de frutas vermelhas e coalhada
+							seca)</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Mix de Queijos</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(gorgonzola, brie, queijo prato e gouda)</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Carpaccio</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(tiras finíssimas de filé regado por um
+							delicioso molho especial, alcaparras, filetes de parmessão e
+							torradas)</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Rolinho de Salmão</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(finíssima massa de recheio de salmão
+							defumado, creme cheese, endrodill, tomate cereja, pesto de
+							alcaparras e azeite de oliva extra virgem)</td>
+					</tr>
+				</table>
+			</div>
+			</li>
+			<li>
+				<table class="table">
+					<tr>
+						<td colspan="4" align="center">PETISCOS QUENTES</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Nachos</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(chips de milho com queijo fundido e pimenta
+							jalapeño, acompanhados dos deliciosos molhos gaucamole e salsa
+							mexicana</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Quesadillas</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(espinafre puxado no alho, queijo derretido
+							servido em tortilhas de trigo com salsa fresca e gauacamole</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Salsichão Alemão</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(tradicional salsichão acompanhado de
+							mostarda alemã e torradas)</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Escondidinho de Carne de Sol</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(com cremoso purê de aipim e gratinado com
+							queijo coalho)</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>Escondidinho de Fumeiro</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(com cremoso purê de aipim e gratinado com
+							queijo coalho)</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Escondidinho de Camarão</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(com delicioso purê de madioquinha e
+							gratinado com queijo coalho)</td>
+					</tr>
+				</table>
+			</li>
+			<li>
+				<table class="table">
+					<tr>
+						<td colspan="4" align="center">SALADAS ESPECIAIS</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Salada Verde</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(mix de folhas, tomates fresco, azeitonas
+							pretas, nozes, abacate, chips de milho e molho especial de limão)</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>Salada Carpaccio</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(refrescante salada de carpaccio, alface
+							americana, rúcula, tomates cereja, alcaparras, parmesão e chips)</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Salada M.L.</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(deliciosa salada de frango ao curry, mix de
+							folhas, tomate seco, palmito, mussarela de búfula, pimentão
+							vermelho, parmesão e chips)</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>Salada Solar da União</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(surpreendente salada de camarões gralhados,
+							mix de folhas temperadas, morangos frescos, alho e croutons)</td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td>Porção de Torradas</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+					</tr>
+				</table>
+			</li>
+			<li>
+				<table class="table">
+					<tr>
+						<td colspan="4" align="center">CREPES</td>
+					</tr>
+					<tr>
+						<td>18</td>
+						<td>Pituba</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(pesto de manjericão, queijo prato e tomates
+							frescos)</td>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td>Cabula</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1" maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(palmito refogado no azeite de oliva extra
+							virgem com alho, mollho bechamel e queijo)</td>
+					</tr>
+					<tr>
+						<td>20</td>
+						<td>Pirajá</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(espinafre puxado no alho, ricta nozes e uva
+							passas)</td>
+					</tr>
+					<tr>
+						<td>21</td>
+						<td>Vasco da Gama</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(berinjela, pimentão vermelho, manjericão e
+							queijo parmesão em massa integral)</td>
+					</tr>
+					<tr>
+						<td>22</td>
+						<td>Taboão</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(frango desfiado, molho bechamel e catupiry)</td>
+					</tr>
+					<tr>
+						<td>23</td>
+						<td>Federação</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(carne moída ou frango desfiado picante,
+							queijo prato, salsa picante e guacamole)</td>
+					</tr>
+					<tr>
+						<td>24</td>
+						<td>Liberdade</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(frango desfiado ao curry, pimentões
+							vermelhos, uvas passa e queijo gouda)</td>
+					</tr>
+					<tr>
+						<td>25</td>
+						<td>Piedade</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(calabresa picante, tomate e queijo prato)</td>
+					</tr>
+					<tr>
+						<td>26</td>
+						<td>Barra</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(queijo brie, presunto parma, queijo, pesto
+							de manjericão e rúcula)</td>
+					</tr>
+					<tr>
+						<td>27</td>
+						<td>Av. Contorno</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(em forma de trouxinha com camarão, alho
+							poró, endro dill, pétalas de menta, morango e creme de leite
+							light)</td>
+					</tr>
+					<tr>
+						<td>28</td>
+						<td>Garibaldi</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(gratinado com cogumelos frescos, molho
+							bechamel e queijo gouda)</td>
+					</tr>
+					<tr>
+						<td>29</td>
+						<td>São Joaquim</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(camarões grelhados, purê de abóbora e
+							catupiry)</td>
+					</tr>
+					<tr>
+						<td>30</td>
+						<td>Curuzu</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(queijo provolone, gorgonzola, prato e
+							catupiry)</td>
+					</tr>
+					<tr>
+						<td>31</td>
+						<td>Plataform</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(peito de peru defumado, alho frito, tomate
+							fresco, queijo e queijo gorgonzola)</td>
+					</tr>
+				</table>
+			</li>
+			<li>
+				<table class="table">
+					<tr>
+						<td colspan="4" align="center">CREPES ABERTOS</td>
+					</tr>
+					<tr>
+						<td>32</td>
+						<td>Lapa</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(alho poró, queijo, nozes, parmesão e tomate
+							seco)</td>
+					</tr>
+					<tr>
+						<td>33</td>
+						<td>Rio Vermelho</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(pesto de manjericão, mussarela de búfula,
+							queijo prato, tomate seco e rúcula)</td>
+					</tr>
+					<tr>
+						<td>34</td>
+						<td>Itapuã</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(gratinado com siri catado ao molho de tomate
+							e queijo parmesão)</td>
+					</tr>
+					<tr>
+						<td>35</td>
+						<td>Rua Chile</td>
+						<td nowrap="true">R$ 10,00</td>
+						<td nowrap="true"><input type="text" value="1"
+							maxwidth="2" size="2">&nbsp;Add</td>
+					</tr>
+					<tr>
+						<td colspan="4">(shitake, tofu, óleo de gergelim, queijo
+							gouda, cebolinha, gergelim e shoyo)</td>
+					</tr>
+				</table>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
