@@ -37,60 +37,55 @@ public class CardapioModelBuilder {
 
 	private void builBodyContainer(CardapioModel model, StringBuilder out) {
 		out.append("	<div class=\"container\">").append(CardapioModelBuilder.NL);
-		// out.append(" <ul
-		// class=\"list-group\">").append(CardapioModelBuilder.NL);
 		final Set<Bloco> blocos = model.getBlocos();
 		for (final Bloco bloco : blocos) {
-			final Set<Bloco> filhos = bloco.getFillhos();
-			for (final Bloco filho : filhos) {
-				// out.append(" <li
-				// class=\"list-group-item\">").append(CardapioModelBuilder.NL);
-				out.append("	<div class=\"panel panel-default\">").append(CardapioModelBuilder.NL);
-				this.buildBodyBloco(filho, out);
-				out.append("	</div>").append(CardapioModelBuilder.NL);
-				// out.append(" </li>").append(CardapioModelBuilder.NL);
-			}
+			this.buildBodyBloco(bloco, out);
 		}
-		// out.append(" </ul>").append(CardapioModelBuilder.NL);
 		out.append("	</div>").append(CardapioModelBuilder.NL);
 	}
 
 	private void buildBodyBloco(Bloco bloco, StringBuilder out) {
-		out.append("	<div class=\"panel-body\">").append(CardapioModelBuilder.NL);
-		out.append(bloco.getTitulo()).append(CardapioModelBuilder.NL);
-		out.append("	</div>").append(CardapioModelBuilder.NL);
-		out.append("<table class=\"table table-striped\">").append(CardapioModelBuilder.NL);
-		// out.append("<tr>").append(CardapioModelBuilder.NL);
-		// out.append(" <td colspan=\"4\"
-		// align=\"center\">").append(bloco.getTitulo()).append("</td>").append(CardapioModelBuilder.NL);
-		// out.append("</tr>").append(CardapioModelBuilder.NL);
+		out.append("	<div class=\"panel panel-default\">").append(CardapioModelBuilder.NL);
+		out.append("		<div class=\"panel-heading\">").append(bloco.getTitulo()).append("	</div>").append(CardapioModelBuilder.NL);
+		//out.append("	<div class=\"panel-title\">").append(bloco.getTitulo()).append("	</div>").append(CardapioModelBuilder.NL);
+		out.append("		<div class=\"panel-body\">").append(CardapioModelBuilder.NL);
 		final Set<Produto> produtos = bloco.getProduto();
 		if (produtos != null) {
-			for (final Produto produto : produtos) {
-				this.buildBodyProduto(produto, out);
-			}
+			this.buildBodyProduto(produtos, out);
 		}
-		out.append("</table>").append(CardapioModelBuilder.NL);
-		// out.append("</br></br>").append(CardapioModelBuilder.NL);
+		out.append("		</div>").append(CardapioModelBuilder.NL);
+		out.append("	</div>").append(CardapioModelBuilder.NL);
+	}
+
+	private void buildBodyProduto(Set<Produto> produtos, StringBuilder out) {
+		Produto[] array = new Produto[produtos.size()];
+		produtos.toArray(array);
+		int columns = 2;
+		for (int i = 0; i < array.length; i = i + columns) {
+			out.append("			<div class=\"row\">").append(CardapioModelBuilder.NL);
+			int startColumn = i * columns;
+			for (int j = startColumn; j < i * columns + columns && j < array.length; j++) {
+				out.append("				<div class=\"col-xs-6\">").append(CardapioModelBuilder.NL);
+				this.buildBodyProduto(array[j], out);
+				out.append("				</div>").append(CardapioModelBuilder.NL);
+			}
+			out.append("			</div>").append(CardapioModelBuilder.NL);
+		}
 	}
 
 	private void buildBodyProduto(Produto produto, StringBuilder out) {
-		out.append("<tr>").append(CardapioModelBuilder.NL);
+		out.append("	<div class=\"panel panel-default\">").append(CardapioModelBuilder.NL);
+		out.append("<div class=\"row\">").append(CardapioModelBuilder.NL);
+		out.append("	<div class=\"col-xs-1\">").append(produto.getCodigo()).append("	</div>").append(CardapioModelBuilder.NL);
+		out.append("	<div class=\"col-xs-11\">").append(produto.getNome()).append("	</div>").append(CardapioModelBuilder.NL);
+		out.append("</div>").append(CardapioModelBuilder.NL);
+		out.append("<div class=\"row\">").append(CardapioModelBuilder.NL);
+		out.append("	<div class=\"col-xs-12\">").append(produto.getDescricao()).append("	</div>").append(CardapioModelBuilder.NL);
+		out.append("</div>").append(CardapioModelBuilder.NL);
+		out.append("			</div>").append(CardapioModelBuilder.NL);
 		/*
-		 * out.append("<td width=\"10%\">"
-		 * ).append(produto.getCodigo()).append("</td>").append(
-		 * CardapioModelBuilder.NL); out.append("<td width=\"55%\">"
-		 * ).append(produto.getNome()).append("</td>").append(
-		 * CardapioModelBuilder.NL); out.append(
-		 * "<td width=\"20%\" nowrap=\"true\">"
-		 * ).append(NumberFormat.getCurrencyInstance().format(10)).append(
-		 * "</td>").append(CardapioModelBuilder.NL); out.append(
-		 * "<td width=\"10%\"><input type=\"text\" value=\"1\" maxwidth=\"2\" size=\"2\"></td>"
-		 * ).append(CardapioModelBuilder.NL); out.append(
-		 * "<td width=\"5%\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span></td>"
-		 * ).append(CardapioModelBuilder.NL);
-		 */
-		out.append("<td>").append(produto.getCodigo()).append("</td>").append(CardapioModelBuilder.NL);
+		out.append("<tr>").append(CardapioModelBuilder.NL);
+		out.append("<td>").append("</td>").append(CardapioModelBuilder.NL);
 		out.append("<td>").append(produto.getNome()).append("</td>").append(CardapioModelBuilder.NL);
 		out.append("<td nowrap=\"true\">").append(NumberFormat.getCurrencyInstance().format(10)).append("</td>").append(CardapioModelBuilder.NL);
 		out.append("<td><input type=\"text\" value=\"1\" maxwidth=\"2\" size=\"2\"></td>").append(CardapioModelBuilder.NL);
@@ -102,6 +97,7 @@ public class CardapioModelBuilder {
 			out.append("	<td colspan=\"4\">").append(descricao).append("</td>").append(CardapioModelBuilder.NL);
 		}
 		out.append("</tr>").append(CardapioModelBuilder.NL);
+		*/
 	}
 
 	private void buildBodyNavigation(CardapioModel model, StringBuilder out) {
