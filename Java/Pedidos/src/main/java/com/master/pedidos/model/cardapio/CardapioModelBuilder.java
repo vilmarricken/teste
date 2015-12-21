@@ -37,25 +37,33 @@ public class CardapioModelBuilder {
 
 	private void builBodyContainer(CardapioModel model, StringBuilder out) {
 		out.append("	<div class=\"container\">").append(CardapioModelBuilder.NL);
-		out.append("	<div class=\"row\">").append(CardapioModelBuilder.NL);
+		// out.append(" <ul
+		// class=\"list-group\">").append(CardapioModelBuilder.NL);
 		final Set<Bloco> blocos = model.getBlocos();
 		for (final Bloco bloco : blocos) {
 			final Set<Bloco> filhos = bloco.getFillhos();
 			for (final Bloco filho : filhos) {
-				out.append("	<div class=\"col-md-6\">").append(CardapioModelBuilder.NL);
+				// out.append(" <li
+				// class=\"list-group-item\">").append(CardapioModelBuilder.NL);
+				out.append("	<div class=\"panel panel-default\">").append(CardapioModelBuilder.NL);
 				this.buildBodyBloco(filho, out);
 				out.append("	</div>").append(CardapioModelBuilder.NL);
+				// out.append(" </li>").append(CardapioModelBuilder.NL);
 			}
 		}
-		out.append("	</div>").append(CardapioModelBuilder.NL);
+		// out.append(" </ul>").append(CardapioModelBuilder.NL);
 		out.append("	</div>").append(CardapioModelBuilder.NL);
 	}
 
 	private void buildBodyBloco(Bloco bloco, StringBuilder out) {
-		out.append("<table width=\"100%\" border=\"1\">").append(CardapioModelBuilder.NL);
-		out.append("<tr>").append(CardapioModelBuilder.NL);
-		out.append("	<td colspan=\"4\" align=\"center\">").append(bloco.getTitulo()).append("</td>").append(CardapioModelBuilder.NL);
-		out.append("</tr>").append(CardapioModelBuilder.NL);
+		out.append("	<div class=\"panel-body\">").append(CardapioModelBuilder.NL);
+		out.append(bloco.getTitulo()).append(CardapioModelBuilder.NL);
+		out.append("	</div>").append(CardapioModelBuilder.NL);
+		out.append("<table class=\"table table-striped\">").append(CardapioModelBuilder.NL);
+		// out.append("<tr>").append(CardapioModelBuilder.NL);
+		// out.append(" <td colspan=\"4\"
+		// align=\"center\">").append(bloco.getTitulo()).append("</td>").append(CardapioModelBuilder.NL);
+		// out.append("</tr>").append(CardapioModelBuilder.NL);
 		final Set<Produto> produtos = bloco.getProduto();
 		if (produtos != null) {
 			for (final Produto produto : produtos) {
@@ -63,14 +71,30 @@ public class CardapioModelBuilder {
 			}
 		}
 		out.append("</table>").append(CardapioModelBuilder.NL);
+		// out.append("</br></br>").append(CardapioModelBuilder.NL);
 	}
 
 	private void buildBodyProduto(Produto produto, StringBuilder out) {
 		out.append("<tr>").append(CardapioModelBuilder.NL);
-		out.append("<td width=\"10%\">").append(produto.getCodigo()).append("</td>").append(CardapioModelBuilder.NL);
+		/*
+		 * out.append("<td width=\"10%\">"
+		 * ).append(produto.getCodigo()).append("</td>").append(
+		 * CardapioModelBuilder.NL); out.append("<td width=\"55%\">"
+		 * ).append(produto.getNome()).append("</td>").append(
+		 * CardapioModelBuilder.NL); out.append(
+		 * "<td width=\"20%\" nowrap=\"true\">"
+		 * ).append(NumberFormat.getCurrencyInstance().format(10)).append(
+		 * "</td>").append(CardapioModelBuilder.NL); out.append(
+		 * "<td width=\"10%\"><input type=\"text\" value=\"1\" maxwidth=\"2\" size=\"2\"></td>"
+		 * ).append(CardapioModelBuilder.NL); out.append(
+		 * "<td width=\"5%\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span></td>"
+		 * ).append(CardapioModelBuilder.NL);
+		 */
+		out.append("<td>").append(produto.getCodigo()).append("</td>").append(CardapioModelBuilder.NL);
 		out.append("<td>").append(produto.getNome()).append("</td>").append(CardapioModelBuilder.NL);
-		out.append("<td width=\"20%\" nowrap=\"true\">").append(NumberFormat.getCurrencyInstance().format(10)).append("</td>").append(CardapioModelBuilder.NL);
-		out.append("<td width=\"20%\" nowrap=\"true\"><input type=\"text\" value=\"1\" maxwidth=\"2\" size=\"2\">&nbsp;Add</td>").append(CardapioModelBuilder.NL);
+		out.append("<td nowrap=\"true\">").append(NumberFormat.getCurrencyInstance().format(10)).append("</td>").append(CardapioModelBuilder.NL);
+		out.append("<td><input type=\"text\" value=\"1\" maxwidth=\"2\" size=\"2\"></td>").append(CardapioModelBuilder.NL);
+		out.append("<td><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span></td>").append(CardapioModelBuilder.NL);
 		out.append("</tr>").append(CardapioModelBuilder.NL);
 		out.append("<tr>").append(CardapioModelBuilder.NL);
 		final String descricao = produto.getDescricao();
