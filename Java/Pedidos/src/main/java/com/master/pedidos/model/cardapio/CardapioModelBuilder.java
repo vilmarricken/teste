@@ -72,16 +72,17 @@ public class CardapioModelBuilder {
 
 	private void buildBodyProduto(Produto produto, StringBuilder out) {
 		out.append("<tr>").append(CardapioModelBuilder.NL);
-		out.append("<td>").append("</td>").append(CardapioModelBuilder.NL);
-		out.append("<td>").append(produto.getNome()).append("</td>").append(CardapioModelBuilder.NL);
-		out.append("<td nowrap=\"true\">").append(NumberFormat.getCurrencyInstance().format(10)).append("</td>").append(CardapioModelBuilder.NL);
-		out.append("<td><input type=\"text\" value=\"1\" maxwidth=\"2\" size=\"2\"></td>").append(CardapioModelBuilder.NL);
-		out.append("<td><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span></td>").append(CardapioModelBuilder.NL);
+		out.append("<td width=\"5%\">").append(produto.getCodigo()).append("</td>").append(CardapioModelBuilder.NL);
+		out.append("<td width=\"80%\">").append(produto.getNome()).append("</td>").append(CardapioModelBuilder.NL);
+		out.append("<td width=\"5%\" nowrap=\"true\">").append(NumberFormat.getCurrencyInstance().format(10)).append("</td>").append(CardapioModelBuilder.NL);
+		out.append("<td width=\"5%\"><input type=\"text\" value=\"1\" maxwidth=\"2\" size=\"2\"></td>").append(CardapioModelBuilder.NL);
+		out.append("<td width=\"5%\"><span class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\" onclick=\"alert(1)\" style=\"cursor: pointer;\"></span></td>").append(CardapioModelBuilder.NL);
+		out.append("<td width=\"5%\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\" onclick=\"alert(2)\" style=\"cursor: pointer;\"></span></td>").append(CardapioModelBuilder.NL);
 		out.append("</tr>").append(CardapioModelBuilder.NL);
 		out.append("<tr>").append(CardapioModelBuilder.NL);
 		final String descricao = produto.getDescricao();
 		if (descricao != null) {
-			out.append("	<td colspan=\"4\">").append(descricao).append("</td>").append(CardapioModelBuilder.NL);
+			out.append("	<td colspan=\"6\">").append(descricao).append("</td>").append(CardapioModelBuilder.NL);
 		}
 		out.append("</tr>").append(CardapioModelBuilder.NL);
 	}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="master-core" basedir="." default="copy">
+<project name="pedeai" basedir="." default="copy">
   <target name="mvn">
     <exec dir="." executable="cmd.exe">
       <arg line="/c mvn clean package install -Dmaven.test.skip=true -DdownloadSources=true" />
@@ -16,10 +16,10 @@
     </exec>
   </target>
   <target name="copy" depends="mvn">
-    <property name="projectName" value="master-core" />
+    <property name="projectName" value="pedeai" />
     <property name="projectVersion" value="1.0" />
     <property name="projectJar" value="${projectName}-${projectVersion}.jar" />
-    <property name="copyTo" value="..\webapps\pedeai\WEB-INF\lib" />
+  	<property name="copyTo" value="..\webapps\pedeai\WEB-INF\lib" />
     <copy file="target/${projectJar}" tofile="${copyTo}\${projectJar}" overwrite="true" />
   </target>
 </project>
