@@ -22,10 +22,12 @@ public class PersistenceManagerHibernate extends PersistenceManager {
 		final StandardServiceRegistry sr = srb.build();
 
 		final MetadataSources ms = new MetadataSources(sr);
-		ms.addAnnotatedClass("MyEntity.class".getClass());
-		ms.addAnnotatedClassName("org.hibernate.example.Customer");
-		ms.addResource("org/hibernate/example/Order.hbm.xml");
-		ms.addResource("org/hibernate/example/Product.orm.xml");
+		/*
+		 * ms.addAnnotatedClass("MyEntity.class".getClass());
+		 * ms.addAnnotatedClassName("org.hibernate.example.Customer");
+		 * ms.addResource("org/hibernate/example/Order.hbm.xml");
+		 * ms.addResource("org/hibernate/example/Product.orm.xml");
+		 */
 		final MetadataBuilder mb = ms.getMetadataBuilder();
 		final Metadata metadata = mb.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
 		this.sessionFactory = metadata.getSessionFactoryBuilder().build();
