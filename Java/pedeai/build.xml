@@ -7,7 +7,7 @@
   </target>
   <target name="eclipse">
     <exec dir="." executable="cmd.exe">
-      <arg line="/c mvn eclipse:eclipse -DdownloadSources=true" />
+      <arg line="/c mvn eclipse:eclipse -Dwtpversion=2.0" />
     </exec>
   </target>
   <target name="clean">

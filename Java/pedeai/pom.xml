@@ -1,40 +1,24 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<project xmlns:ns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.master</groupId>
 	<artifactId>pedeai</artifactId>
-	<name>Pedeai Serice</name>
+	<name>Pedeai Service</name>
+	<packaging>war</packaging>
 	<version>1.0</version>
-	<description>[Project description]</description>
-	<repositories>
-		<repository>
-			<id>Central</id>
-			<name>Maven Repository Switchboard</name>
-			<layout>default</layout>
-			<url>http://repo1.maven.org/maven2</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-			<!-- <plugin> <groupId>org.apache.tomcat.maven</groupId> <artifactId>tomcat7-maven-plugin</artifactId> 
-				<version>2.3-SNAPSHOT</version> <configuration> <server>http://localhost:8080/manager</server> 
-				</configuration> </plugin> -->
-		</plugins>
-	</build>
+	<url>http://maven.apache.org</url>
 	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.8</version>
+		</dependency>
 		<dependency>
 			<groupId>com.master</groupId>
 			<artifactId>master-core</artifactId>
@@ -56,5 +40,7 @@
 			<version>7.0</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<finalName>pedeai</finalName>
+	</build>
 </project>
-
