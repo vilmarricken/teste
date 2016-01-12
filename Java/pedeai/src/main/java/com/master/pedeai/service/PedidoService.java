@@ -1,11 +1,14 @@
 package com.master.pedeai.service;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.Path;
 
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+/**
+ * http://www.mkyong.com/webservices/jax-rs/jersey-hello-world-example/
+ * 
+ * @author Mazinho
+ *
+ */
+@Path("/pedido")
 public class PedidoService {
 
 }
