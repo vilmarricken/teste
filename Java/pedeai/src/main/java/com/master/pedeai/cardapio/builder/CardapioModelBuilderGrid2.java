@@ -1,11 +1,13 @@
-package com.master.pedidos.model.cardapio;
+package com.master.pedeai.cardapio.builder;
 
-import java.text.NumberFormat;
 import java.util.Set;
 
 import com.master.core.dao.DaoFactory;
 import com.master.core.exception.MasterException;
-import com.master.pedidos.dao.cardapio.CardapioDao;
+import com.master.pedeai.bloco.model.BlocoModel;
+import com.master.pedeai.cardapio.dao.CardapioDao;
+import com.master.pedeai.cardapio.model.CardapioModel;
+import com.master.pedeai.produto.model.Produto;
 
 public class CardapioModelBuilderGrid2 {
 
@@ -37,14 +39,14 @@ public class CardapioModelBuilderGrid2 {
 
 	private void builBodyContainer(CardapioModel model, StringBuilder out) {
 		out.append("	<div class=\"container\">").append(CardapioModelBuilderGrid2.NL);
-		final Set<Bloco> blocos = model.getBlocos();
-		for (final Bloco bloco : blocos) {
+		final Set<BlocoModel> blocos = model.getBlocos();
+		for (final BlocoModel bloco : blocos) {
 			this.buildBodyBloco(bloco, out);
 		}
 		out.append("	</div>").append(CardapioModelBuilderGrid2.NL);
 	}
 
-	private void buildBodyBloco(Bloco bloco, StringBuilder out) {
+	private void buildBodyBloco(BlocoModel bloco, StringBuilder out) {
 		out.append("	<div class=\"panel panel-default\">").append(CardapioModelBuilderGrid2.NL);
 		out.append("		<div class=\"panel-heading\">").append(bloco.getTitulo()).append("	</div>").append(CardapioModelBuilderGrid2.NL);
 		//out.append("	<div class=\"panel-title\">").append(bloco.getTitulo()).append("	</div>").append(CardapioModelBuilder.NL);

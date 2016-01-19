@@ -1,4 +1,4 @@
-package com.master.pedidos.dao.cardapio;
+package com.master.pedeai.cardapio.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +9,9 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import com.master.core.exception.MasterException;
-import com.master.pedidos.model.cardapio.Bloco;
-import com.master.pedidos.model.cardapio.CardapioModel;
-import com.master.pedidos.model.cardapio.Produto;
+import com.master.pedeai.bloco.model.BlocoModel;
+import com.master.pedeai.cardapio.model.CardapioModel;
+import com.master.pedeai.produto.model.Produto;
 import com.master.persistence.dao.DaoDefault;
 
 public class CardapioDaoDefault extends DaoDefault implements CardapioDao {
@@ -22,7 +22,7 @@ public class CardapioDaoDefault extends DaoDefault implements CardapioDao {
 		ResultSet rs = null;
 		try {
 			stmt = this.prepare(this.sqlCardapioBloco());
-			// stmt.setString(1, estabelecimento);
+			stmt.setString(1, estabelecimento);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				return this.populaCardapio(rs);
@@ -45,9 +45,9 @@ public class CardapioDaoDefault extends DaoDefault implements CardapioDao {
 		cardapio.setOid(rs.getString(CardapioDaoDefault.COLUMN_CARDAPIO_OID));
 		cardapio.setAtivo(1 == rs.getInt(CardapioDaoDefault.COLUMN_CARDAPIO_ATIVO));
 		cardapio.setTitulo(rs.getString(CardapioDaoDefault.COLUMN_CARDAPIO_TITULO));
-		final Set<Bloco> blocos = new TreeSet<>();
+		final Set<BlocoModel> blocos = new TreeSet<>();
 		cardapio.setBlocos(blocos);
-		final Map<String, Bloco> mapBlocos = new HashMap<>();
+		final Map<String, BlocoModel> mapBlocos = new HashMap<>();
 		this.populateBloco(blocos, mapBlocos, rs);
 		return cardapio;
 	}
@@ -60,10 +60,10 @@ public class CardapioDaoDefault extends DaoDefault implements CardapioDao {
 	private static int COLUMN_BLOCO_ORDEM = 9;
 	private static int COLUMN_BLOCO_SUPERIOR = 10;
 
-	private void populateBloco(Set<Bloco> blocos, Map<String, Bloco> mapBlocos, ResultSet rs) throws SQLException, MasterException {
+	private void populateBloco(Set<BlocoModel> blocos, Map<String, BlocoModel> mapBlocos, ResultSet rs) throws SQLException, MasterException {
 		do {
 			final String blocoOid = rs.getString(CardapioDaoDefault.COLUMN_BLOCO_OID);
-			final Bloco bloco = this.getBloco(blocoOid, mapBlocos);
+			final BlocoModel bloco = this.getBloco(blocoOid, mapBlocos);
 			bloco.setTitulo(rs.getString(CardapioDaoDefault.COLUMN_BLOCO_TITULO));
 			bloco.setDescricao(rs.getString(CardapioDaoDefault.COLUMN_BLOCO_DESCRICAO));
 			bloco.setImagemTitulo(rs.getString(CardapioDaoDefault.COLUMN_BLOCO_IMAGEM_TITULO));
@@ -71,9 +71,9 @@ public class CardapioDaoDefault extends DaoDefault implements CardapioDao {
 			bloco.setOrdem(rs.getInt(CardapioDaoDefault.COLUMN_BLOCO_ORDEM));
 			final String superiorOid = rs.getString(CardapioDaoDefault.COLUMN_BLOCO_SUPERIOR);
 			if (superiorOid != null) {
-				final Bloco superior = this.getBloco(superiorOid, mapBlocos);
+				final BlocoModel superior = this.getBloco(superiorOid, mapBlocos);
 				bloco.setSuperior(superior);
-				Set<Bloco> filhos = superior.getFillhos();
+				Set<BlocoModel> filhos = superior.getFillhos();
 				if (filhos == null) {
 					filhos = new TreeSet<>();
 					superior.setFillhos(filhos);
@@ -120,10 +120,10 @@ public class CardapioDaoDefault extends DaoDefault implements CardapioDao {
 		return produtos;
 	}
 
-	private Bloco getBloco(String blocoOid, Map<String, Bloco> mapBlocos) {
-		Bloco bloco = mapBlocos.get(blocoOid);
+	private BlocoModel getBloco(String blocoOid, Map<String, BlocoModel> mapBlocos) {
+		BlocoModel bloco = mapBlocos.get(blocoOid);
 		if (bloco == null) {
-			bloco = new Bloco();
+			bloco = new BlocoModel();
 			bloco.setOid(blocoOid);
 			mapBlocos.put(blocoOid, bloco);
 		}
@@ -170,7 +170,7 @@ public class CardapioDaoDefault extends DaoDefault implements CardapioDao {
 		sb.append("  from cardapio\n");
 		sb.append("       inner join bloco\n");
 		sb.append("                  on bloco.cardapio=cardapio.oid\n");
-		// sb.append(" where cardapio.estabelecimento=?\n");
+		sb.append(" where cardapio.estabelecimento=?\n");
 		sb.append("       where cardapio.estabelecimento in (select oid from estabelecimento)\n");
 		sb.append("         and cardapio.ativo=1\n");
 		return sb.toString();

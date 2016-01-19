@@ -1,4 +1,4 @@
-package com.master.pedidos.model.cardapio;
+package com.master.pedeai.produto.model;
 
 public class Produto implements Comparable<Produto> {
 

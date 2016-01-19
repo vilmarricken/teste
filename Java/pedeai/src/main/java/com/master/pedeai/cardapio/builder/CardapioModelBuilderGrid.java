@@ -1,11 +1,14 @@
-package com.master.pedidos.model.cardapio;
+package com.master.pedeai.cardapio.builder;
 
 import java.text.NumberFormat;
 import java.util.Set;
 
 import com.master.core.dao.DaoFactory;
 import com.master.core.exception.MasterException;
-import com.master.pedidos.dao.cardapio.CardapioDao;
+import com.master.pedeai.bloco.model.BlocoModel;
+import com.master.pedeai.cardapio.dao.CardapioDao;
+import com.master.pedeai.cardapio.model.CardapioModel;
+import com.master.pedeai.produto.model.Produto;
 
 public class CardapioModelBuilderGrid {
 
@@ -38,10 +41,10 @@ public class CardapioModelBuilderGrid {
 	private void builBodyContainer(CardapioModel model, StringBuilder out) {
 		out.append("	<div class=\"container\">").append(CardapioModelBuilderGrid.NL);
 		out.append("	<div class=\"row\">").append(CardapioModelBuilderGrid.NL);
-		final Set<Bloco> blocos = model.getBlocos();
-		for (final Bloco bloco : blocos) {
-			final Set<Bloco> filhos = bloco.getFillhos();
-			for (final Bloco filho : filhos) {
+		final Set<BlocoModel> blocos = model.getBlocos();
+		for (final BlocoModel bloco : blocos) {
+			final Set<BlocoModel> filhos = bloco.getFillhos();
+			for (final BlocoModel filho : filhos) {
 				out.append("	<div class=\"col-md-6\">").append(CardapioModelBuilderGrid.NL);
 				this.buildBodyBloco(filho, out);
 				out.append("	</div>").append(CardapioModelBuilderGrid.NL);
@@ -51,7 +54,7 @@ public class CardapioModelBuilderGrid {
 		out.append("	</div>").append(CardapioModelBuilderGrid.NL);
 	}
 
-	private void buildBodyBloco(Bloco bloco, StringBuilder out) {
+	private void buildBodyBloco(BlocoModel bloco, StringBuilder out) {
 		out.append("<table width=\"100%\" border=\"1\">").append(CardapioModelBuilderGrid.NL);
 		out.append("<tr>").append(CardapioModelBuilderGrid.NL);
 		out.append("	<td colspan=\"4\" align=\"center\">").append(bloco.getTitulo()).append("</td>").append(CardapioModelBuilderGrid.NL);

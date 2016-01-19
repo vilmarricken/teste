@@ -1,6 +1,8 @@
-package com.master.pedidos.model.cardapio;
+package com.master.pedeai.cardapio.model;
 
 import java.util.Set;
+
+import com.master.pedeai.bloco.model.BlocoModel;
 
 public class CardapioModel {
 
@@ -12,7 +14,7 @@ public class CardapioModel {
 
 	private String descricao;
 
-	private Set<Bloco> blocos;
+	private Set<BlocoModel> blocos;
 
 	public String getOid() {
 		return this.oid;
@@ -38,11 +40,11 @@ public class CardapioModel {
 		this.titulo = titulo;
 	}
 
-	public Set<Bloco> getBlocos() {
+	public Set<BlocoModel> getBlocos() {
 		return this.blocos;
 	}
 
-	public void setBlocos(Set<Bloco> blocos) {
+	public void setBlocos(Set<BlocoModel> blocos) {
 		this.blocos = blocos;
 	}
 

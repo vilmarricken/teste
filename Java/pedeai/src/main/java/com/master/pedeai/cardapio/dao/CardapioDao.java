@@ -1,8 +1,8 @@
-package com.master.pedidos.dao.cardapio;
+package com.master.pedeai.cardapio.dao;
 
 import com.master.core.dao.Dao;
 import com.master.core.exception.MasterException;
-import com.master.pedidos.model.cardapio.CardapioModel;
+import com.master.pedeai.cardapio.model.CardapioModel;
 
 public interface CardapioDao extends Dao {
 

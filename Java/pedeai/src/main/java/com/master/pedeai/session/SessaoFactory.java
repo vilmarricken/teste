@@ -1,4 +1,4 @@
-package com.master.pedeai.sessao;
+package com.master.pedeai.session;
 
 public class SessaoFactory {
 

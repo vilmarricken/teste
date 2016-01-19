@@ -1,6 +1,6 @@
 package com.master.core.resource;
 
-public class ResourceFacotryImpl extends ResourceFacotry {
+class ResourceFacotryImpl extends ResourceFacotry {
 
 	private static final ThreadLocal<Resource> RESOURCE = new ThreadLocal<>();
 
@@ -22,5 +22,5 @@ public class ResourceFacotryImpl extends ResourceFacotry {
 	public void endResource() {
 		RESOURCE.remove();
 	}
-	
+
 }

@@ -1,9 +1,10 @@
-package com.master.pedidos.model.cardapio;
+package com.master.pedeai.bloco.model;
 
-import java.util.List;
 import java.util.Set;
 
-public class Bloco implements Comparable<Bloco> {
+import com.master.pedeai.produto.model.Produto;
+
+public class BlocoModel implements Comparable<BlocoModel> {
 
 	private String oid;
 
@@ -17,13 +18,13 @@ public class Bloco implements Comparable<Bloco> {
 
 	private int ordem;
 
-	private Bloco superior;
+	private BlocoModel superior;
 
-	private Set<Bloco> fillhos;
+	private Set<BlocoModel> fillhos;
 
 	private Set<Produto> produto;
 
-	public Bloco() {
+	public BlocoModel() {
 	}
 
 	public String getOid() {
@@ -74,24 +75,24 @@ public class Bloco implements Comparable<Bloco> {
 		this.ordem = ordem;
 	}
 
-	public Bloco getSuperior() {
+	public BlocoModel getSuperior() {
 		return superior;
 	}
 
-	public void setSuperior(Bloco superior) {
+	public void setSuperior(BlocoModel superior) {
 		this.superior = superior;
 	}
 
-	public Set<Bloco> getFillhos() {
+	public Set<BlocoModel> getFillhos() {
 		return fillhos;
 	}
 
-	public void setFillhos(Set<Bloco> fillhos) {
+	public void setFillhos(Set<BlocoModel> fillhos) {
 		this.fillhos = fillhos;
 	}
 
 	@Override
-	public int compareTo(Bloco o) {
+	public int compareTo(BlocoModel o) {
 		return this.ordem - o.ordem;
 	}
 	

@@ -1,4 +1,4 @@
-package com.master.pedeai.sessao;
+package com.master.pedeai.session;
 
 import java.io.Serializable;
 
