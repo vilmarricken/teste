@@ -1,5 +1,7 @@
 package com.master.pedeai.cardapio.builder;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.text.NumberFormat;
 import java.util.Set;
 
@@ -10,19 +12,23 @@ import com.master.pedeai.cardapio.dao.CardapioDao;
 import com.master.pedeai.cardapio.model.CardapioModel;
 import com.master.pedeai.produto.model.Produto;
 
-public class CardapioModelBuilderImpl {
+public class CardapioModelBuilderImpl implements CardapioModelBuilder {
 
 	private static final String NL = "\n";
 
-	public String build(String estabelecimento) throws MasterException {
-		final CardapioDao dao = DaoFactory.getDao(CardapioDao.class);
-		final CardapioModel model = dao.builModel(estabelecimento);
-		final StringBuilder out = new StringBuilder(5 * 1024);
-		this.build(model, out);
-		return out.toString();
+	CardapioModelBuilderImpl() {
 	}
 
-	private void build(CardapioModel model, StringBuilder out) {
+	public byte[] build(String estabelecimento) throws MasterException {
+		final CardapioDao dao = DaoFactory.getDao(CardapioDao.class);
+		final CardapioModel model = dao.builModel(estabelecimento);
+		ByteArrayOutputStream bout = new ByteArrayOutputStream(5000);
+		PrintStream out = new PrintStream(bout);
+		this.build(model, out);
+		return bout.toByteArray();
+	}
+
+	private void build(CardapioModel model, PrintStream out) {
 		out.append("<!DOCTYPE html>").append(CardapioModelBuilderImpl.NL);
 		out.append("<html lang=\"pt\">").append(CardapioModelBuilderImpl.NL);
 		this.buildHeader(model, out);
@@ -30,7 +36,7 @@ public class CardapioModelBuilderImpl {
 		out.append("</html>").append(CardapioModelBuilderImpl.NL);
 	}
 
-	private void buildBody(CardapioModel model, StringBuilder out) {
+	private void buildBody(CardapioModel model, PrintStream out) {
 		out.append("<body>").append(CardapioModelBuilderImpl.NL);
 		this.buildBodyHeader(model, out);
 		this.buildBodyNavigation(model, out);
@@ -38,7 +44,7 @@ public class CardapioModelBuilderImpl {
 		out.append("</body>").append(CardapioModelBuilderImpl.NL);
 	}
 
-	private void builBodyContainer(CardapioModel model, StringBuilder out) {
+	private void builBodyContainer(CardapioModel model, PrintStream out) {
 		out.append("	<div class=\"container\">").append(CardapioModelBuilderImpl.NL);
 		final Set<BlocoModel> blocos = model.getBlocos();
 		for (final BlocoModel bloco : blocos) {
@@ -47,7 +53,7 @@ public class CardapioModelBuilderImpl {
 		out.append("	</div>").append(CardapioModelBuilderImpl.NL);
 	}
 
-	private void buildBodyBloco(BlocoModel bloco, StringBuilder out) {
+	private void buildBodyBloco(BlocoModel bloco, PrintStream out) {
 		out.append("	<div class=\"panel panel-default\">").append(CardapioModelBuilderImpl.NL);
 		out.append("		<div class=\"panel-heading\">").append(bloco.getTitulo()).append("	</div>").append(CardapioModelBuilderImpl.NL);
 		out.append("		<div class=\"panel-body\">").append(CardapioModelBuilderImpl.NL);
@@ -59,7 +65,7 @@ public class CardapioModelBuilderImpl {
 		out.append("	</div>").append(CardapioModelBuilderImpl.NL);
 	}
 
-	private void buildBodyProduto(Set<Produto> produtos, StringBuilder out) {
+	private void buildBodyProduto(Set<Produto> produtos, PrintStream out) {
 		final Produto[] array = new Produto[produtos.size()];
 		produtos.toArray(array);
 		final int columns = 2;
@@ -73,7 +79,7 @@ public class CardapioModelBuilderImpl {
 		}
 	}
 
-	private void buildBodyProduto(Produto produto, StringBuilder out) {
+	private void buildBodyProduto(Produto produto, PrintStream out) {
 		out.append("<tr>").append(CardapioModelBuilderImpl.NL);
 		out.append("<td width=\"5%\">").append(produto.getCodigo()).append("</td>").append(CardapioModelBuilderImpl.NL);
 		out.append("<td width=\"80%\">").append(produto.getNome()).append("</td>").append(CardapioModelBuilderImpl.NL);
@@ -90,7 +96,7 @@ public class CardapioModelBuilderImpl {
 		out.append("</tr>").append(CardapioModelBuilderImpl.NL);
 	}
 
-	private void buildBodyNavigation(CardapioModel model, StringBuilder out) {
+	private void buildBodyNavigation(CardapioModel model, PrintStream out) {
 		out.append("	<nav class=\"navbar navbar-inverse\">").append(CardapioModelBuilderImpl.NL);
 		out.append("		<div class=\"container-fluid\">").append(CardapioModelBuilderImpl.NL);
 		out.append("			<div class=\"navbar-header\">").append(CardapioModelBuilderImpl.NL);
@@ -118,7 +124,7 @@ public class CardapioModelBuilderImpl {
 		out.append("	</nav>").append(CardapioModelBuilderImpl.NL);
 	}
 
-	private void buildBodyHeader(CardapioModel model, StringBuilder out) {
+	private void buildBodyHeader(CardapioModel model, PrintStream out) {
 		out.append("	<div class=\"jumbotron\">").append(CardapioModelBuilderImpl.NL);
 		out.append("		<div class=\"container text-center\">").append(CardapioModelBuilderImpl.NL);
 		out.append("			<h1>");
@@ -134,7 +140,7 @@ public class CardapioModelBuilderImpl {
 		out.append("	</div>").append(CardapioModelBuilderImpl.NL);
 	}
 
-	private void buildHeader(CardapioModel model, StringBuilder out) {
+	private void buildHeader(CardapioModel model, PrintStream out) {
 		out.append("<head>").append(CardapioModelBuilderImpl.NL);
 		out.append("	<title>Bootstrap Example</title>").append(CardapioModelBuilderImpl.NL);
 		out.append("	<meta charset=\"iso-8859-1\">").append(CardapioModelBuilderImpl.NL);

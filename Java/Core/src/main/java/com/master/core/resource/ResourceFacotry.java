@@ -7,6 +7,10 @@ public abstract class ResourceFacotry {
 	public ResourceFacotry() {
 	}
 
+	public static <P extends Resource> P get(){
+		return getFactory().getResource();
+	}
+	
 	public static ResourceFacotry getFactory() {
 		if (factory == null)
 			factory = new ResourceFacotryImpl();

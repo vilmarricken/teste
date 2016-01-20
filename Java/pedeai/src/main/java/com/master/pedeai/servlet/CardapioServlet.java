@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.master.core.resource.ResourceFacotry;
+import com.master.pedeai.resource.ResourceWeb;
+
 public class CardapioServlet extends HttpServlet {
 
 	public CardapioServlet() {
@@ -14,12 +17,13 @@ public class CardapioServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		ResourceWeb resource = ResourceFacotry.get();
+		resource.getEstabelecimento();
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this.doGet(req, resp);
 	}
-	
+
 }
